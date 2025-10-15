@@ -6,8 +6,8 @@ public interface CalculatorModelInterface {
 	public void drop();
 	public void swap();
 	public void clear();
-	public void add(double num1 , double num2);
-	public void substract(double num1 , double num2);
+	public double add(double num1 , double num2);
+	public double substract(double num1 , double num2);
 	public void multiply (double num1 , double num2);
 	public void divide (double num1 , double num2);
 	public void opposite(double num);
