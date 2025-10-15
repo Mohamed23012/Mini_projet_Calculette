@@ -5,8 +5,7 @@ import java.util.ArrayList;
 import java.util.Deque;
 import java.util.List;
 
-public class Pile {
-	
+public class CalculatorModel implements CalculatorModelInterface {
 	 
 private final Deque<Double> stack = new ArrayDeque<>();
 
@@ -38,5 +37,6 @@ stack.push(b);
 public void clear() { stack.clear(); }
 public boolean isEmpty() { return stack.isEmpty(); }
 public int size() { return stack.size(); }
-public List<Double> toListTopFirst() { return new ArrayList<>(stack); }
+public List<Double> toListTopFirst() { return new ArrayList<>(stack); }	
+	
 }
