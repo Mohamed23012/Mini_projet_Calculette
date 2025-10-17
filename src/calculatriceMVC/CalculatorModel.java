@@ -53,17 +53,17 @@ public class CalculatorModel implements CalculatorModelInterface {
 		stack.push(accum);
 	}
 	public void multiply() {
-		if(stack.size() <2) throw new IllegalStateException("Besoin d'au moins 2 opérande ");
+		if(stack.size() <2) throw new IllegalStateException("Besoin d'au moins 2 opérandes ");
 		double b=stack.pop();
 		double a=stack.pop();
 		accum = a*b;
 		stack.push(accum);
 		}
 	public void divide() {
-		if(stack.size() <2) throw new IllegalStateException("Besoin  d'au moins 2 opérande");
+		if(stack.size() <2) throw new IllegalStateException("Besoin  d'au moins 2 opérandes");
 		double b =stack.pop();
 		double a=stack.pop();
-		if(b == 0) throw new IllegalStateException("On ne peut pas de diviser sur zéro");
+		if(b == 0) throw new IllegalStateException("On ne peut pas diviser par zéro");
 		accum = a/b;
 		stack.push(accum);
 		}

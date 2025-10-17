@@ -1,11 +1,10 @@
 package calculatriceMVC;
 
-import java.util.Locale;
+
 import java.util.Scanner;
 
 public class ConsoleMain {
-    public static void main(String[] args) {
-        Locale.setDefault(Locale.US); 
+    public static void main(String[] args) { 
         CalculatorModel m = new CalculatorModel();
         Scanner sc = new Scanner(System.in);
         while (true) {
