@@ -33,19 +33,47 @@ public class CalculatorModel implements CalculatorModelInterface {
 	stack.push(b);
 	}
 	
-	
-	public void clear() { stack.clear(); }
+    public void clear() { stack.clear(); }
 	public boolean isEmpty() { return stack.isEmpty(); }
 	public int size() { return stack.size(); }
 	public List<Double> toListTopFirst() { return new ArrayList<>(stack); }	
 	
-	public double add(double num1 , double num2) {
-		accum= num1 +num2;
-		return accum;
+	public void add() {
+	    if (stack.size() < 2) throw new IllegalStateException("Besoin d'au moins 2 opérandes");
+	    double b = stack.pop();
+	    double a = stack.pop();
+	    accum = a + b;
+	    stack.push(accum);
 	}
-	public double substract(double num1 ,double num2) {
-		accum= num1 - num2 ;
-		return accum;
+	public void substract() {
+		if(stack.size() < 2) throw new IllegalStateException("Besoin d'au moins 2 opérandes");
+		double b =stack.pop();
+		double a = stack.pop();
+		accum= a - b ;
+		stack.push(accum);
 	}
-	
+	public void multiply() {
+		if(stack.size() <2) throw new IllegalStateException("Besoin d'au moins 2 opérande ");
+		double b=stack.pop();
+		double a=stack.pop();
+		accum = a*b;
+		stack.push(accum);
+		}
+	public void divide() {
+		if(stack.size() <2) throw new IllegalStateException("Besoin  d'au moins 2 opérande");
+		double b =stack.pop();
+		double a=stack.pop();
+		if(b == 0) throw new IllegalStateException("On ne peut pas de diviser sur zéro");
+		accum = a/b;
+		stack.push(accum);
+		}
+	@Override
+	public String toString() {
+		return "CalculatorModel [accum=" + accum + "]";
+	}
+    public void opposite() {
+		double a =stack.pop();
+		accum = -a;
+		stack.push (accum);
+		}
 }
