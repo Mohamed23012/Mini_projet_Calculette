@@ -4,8 +4,10 @@ package calculatriceMVC;
 import java.util.Scanner;
 
 public class ConsoleMain {
+
     public static void main(String[] args) {
         
+
         CalculatorModel m = new CalculatorModel();
         Scanner sc = new Scanner(System.in);
         while (true) {
