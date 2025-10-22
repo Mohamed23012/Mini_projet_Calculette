@@ -27,7 +27,7 @@ public class CalculatorModel implements CalculatorModelInterface {
         }
     }
 
-    // ---- API pile & opérations ----
+    
     @Override
     public void push(double v) {
         stack.push(v);
@@ -38,8 +38,10 @@ public class CalculatorModel implements CalculatorModelInterface {
     public double pop() {
         if (stack.isEmpty()) throw new IllegalStateException("Pile vide (pop)");
         double v = stack.pop();
+        accum=v;
         notifyChange();
         return v;
+        
     }
 
     @Override

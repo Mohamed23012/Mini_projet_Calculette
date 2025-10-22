@@ -10,7 +10,7 @@ import java.util.List;
 
 public class CalculetteView extends JFrame {
 
-    // --- Thème (modifiable facilement) ---
+    //  Thème 
     private static final Color BG       = new Color(0x0F, 0x14, 0x1A); // fond fenêtre
     private static final Color CARD     = new Color(0x19, 0x1F, 0x29); // cartes/panneaux
     private static final Color ACCENT   = new Color(0x62, 0xA8, 0xE5); // bleu clair

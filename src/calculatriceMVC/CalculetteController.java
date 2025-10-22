@@ -11,7 +11,7 @@ public class CalculetteController implements CalculetteControllerInterface {
         this.model = model;
         this.view  = view;
 
-        // câblage MVC
+        
         this.view.setController(this);
 
         // brancher l'observateur sur l'implémentation concrète
