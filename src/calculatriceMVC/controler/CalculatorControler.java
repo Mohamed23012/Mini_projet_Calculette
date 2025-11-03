@@ -1,13 +1,17 @@
-package calculatriceMVC;
+package calculatriceMVC.controler;
 
 import java.util.List;
 
-public class CalculetteController implements CalculetteControllerInterface {
+import calculatriceMVC.model.CalculatorModel;
+import calculatriceMVC.model.CalculatorModelInterface;
+import calculatriceMVC.view.CalculatorGUI;
+
+public class CalculatorControler implements CalculatorControlerInterface {
 
     private final CalculatorModelInterface model;
-    private final CalculetteView view;
+    private final CalculatorGUI view;
 
-    public CalculetteController(CalculatorModelInterface model, CalculetteView view) {
+    public CalculatorControler(CalculatorModelInterface model, CalculatorGUI view) {
         this.model = model;
         this.view  = view;
 

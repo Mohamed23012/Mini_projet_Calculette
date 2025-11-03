@@ -3,6 +3,8 @@ package calculatriceMVC;
 
 import java.util.Scanner;
 
+import calculatriceMVC.model.CalculatorModel;
+
 public class ConsoleMain {
 
     public static void main(String[] args) {
@@ -18,7 +20,7 @@ public class ConsoleMain {
                 switch (cmd) {
                     case "push" -> {
                         if (!sc.hasNextDouble()) {
-                            System.out.println("⚠️  Il faut un nombre après 'push'.");
+                            System.out.println("Il faut un nombre après 'push'.");
                             sc.nextLine();
                             continue;
                         }

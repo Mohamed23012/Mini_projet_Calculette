@@ -1,4 +1,4 @@
-package calculatriceMVC;
+package calculatriceMVC.model;
 
 public interface CalculatorModelInterface {
 	public void push(double v);

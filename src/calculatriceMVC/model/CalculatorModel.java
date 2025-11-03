@@ -1,9 +1,11 @@
-package calculatriceMVC;
+package calculatriceMVC.model;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Deque;
 import java.util.List;
+
+import calculatriceMVC.controler.CalculatorControlerInterface;
 
 public class CalculatorModel implements CalculatorModelInterface {
 
@@ -11,10 +13,10 @@ public class CalculatorModel implements CalculatorModelInterface {
     private double accum;
 
     // ---- Observateur (le contrôleur) ----
-    private CalculetteControllerInterface listener;
+    private CalculatorControlerInterface listener;
 
     /** Brancher l'observateur (contrôleur) */
-    public void setListener(CalculetteControllerInterface listener) {
+    public void setListener(CalculatorControlerInterface listener) {
         this.listener = listener;
         notifyChange(); // pousse l'état initial à la vue
     }
