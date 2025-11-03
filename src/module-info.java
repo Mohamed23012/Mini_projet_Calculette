@@ -5,6 +5,5 @@
  * 
  */
 module Mini_projet_Calculette {
-	requires java.desktop; 
-	exports calculatriceMVC;
+	 requires java.desktop;
 }

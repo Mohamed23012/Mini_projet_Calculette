@@ -50,10 +50,28 @@ public class CalculatorControler implements CalculatorControlerInterface {
         }
     }
 
-    public void onAdd() { try { onPush(); model.add(); } catch (Exception e) { view.showError(e.getMessage()); } }
-    public void onSub() { try { onPush(); model.substract(); } catch (Exception e) { view.showError(e.getMessage()); } }
-    public void onMul() { try { onPush(); model.multiply(); } catch (Exception e) { view.showError(e.getMessage()); } }
-    public void onDiv() { try { onPush(); model.divide(); } catch (Exception e) { view.showError(e.getMessage()); } }
+    private void doBinary(Runnable op) {
+        try {
+            onPush();
+            
+            if (model.size() == 1 && model.hasValidAccum()) {
+                double last = model.getAccum();
+                model.push(last);
+                model.swap();
+            }
+
+           
+            op.run();
+
+        } catch (Exception ex) {
+            view.showError(ex.getMessage());
+        }
+    }
+
+    public void onAdd() { doBinary(model::add); }
+    public void onSub() { doBinary(model::substract); }
+    public void onMul() { doBinary(model::multiply); }
+    public void onDiv() { doBinary(model::divide); }
 
     public void onOpp() {
         try { onPush(); model.opposite(); }

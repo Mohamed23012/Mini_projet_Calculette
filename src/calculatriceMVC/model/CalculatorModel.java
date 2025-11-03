@@ -11,6 +11,8 @@ public class CalculatorModel implements CalculatorModelInterface {
 
     private final Deque<Double> stack = new ArrayDeque<>();
     private double accum;
+    private boolean accumValid = false;
+    
 
     // ---- Observateur (le contrôleur) ----
     private CalculatorControlerInterface listener;
@@ -41,6 +43,7 @@ public class CalculatorModel implements CalculatorModelInterface {
         if (stack.isEmpty()) throw new IllegalStateException("Pile vide (pop)");
         double v = stack.pop();
         accum=v;
+        accumValid = true;
         notifyChange();
         return v;
         
@@ -66,10 +69,12 @@ public class CalculatorModel implements CalculatorModelInterface {
     @Override
     public void clear() {
         stack.clear();
-        accum = 0;       // logique : on remet l'accumulateur à zéro
+        accum = 0; // logique : on remet l'accumulateur à zéro
+        accumValid = false;
         notifyChange();
     }
-
+    @Override public double getAccum() { return accum; }
+    @Override public boolean hasValidAccum() { return accumValid; }
     public boolean isEmpty() { return stack.isEmpty(); }
     public int size() { return stack.size(); }
     public List<Double> toListTopFirst() { return new ArrayList<>(stack); }
@@ -80,6 +85,7 @@ public class CalculatorModel implements CalculatorModelInterface {
         double b = stack.pop();
         double a = stack.pop();
         accum = a + b;
+        accumValid = true;
         stack.push(accum);
         notifyChange();
     }
@@ -90,6 +96,7 @@ public class CalculatorModel implements CalculatorModelInterface {
         double b = stack.pop();
         double a = stack.pop();
         accum = a - b;
+        accumValid = true;
         stack.push(accum);
         notifyChange();
     }
@@ -100,6 +107,7 @@ public class CalculatorModel implements CalculatorModelInterface {
         double b = stack.pop();
         double a = stack.pop();
         accum = a * b;
+        accumValid = true;
         stack.push(accum);
         notifyChange();
     }
@@ -111,6 +119,7 @@ public class CalculatorModel implements CalculatorModelInterface {
         double a = stack.pop();
         if (b == 0) throw new IllegalStateException("On ne peut pas diviser par zéro");
         accum = a / b;
+        accumValid = true;
         stack.push(accum);
         notifyChange();
     }
@@ -120,6 +129,7 @@ public class CalculatorModel implements CalculatorModelInterface {
         if (stack.isEmpty()) throw new IllegalStateException("Pile vide (opposé)");
         double a = stack.pop();
         accum = -a;
+        accumValid = true;
         stack.push(accum);
         notifyChange();
     }

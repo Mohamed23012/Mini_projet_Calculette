@@ -11,4 +11,7 @@ public interface CalculatorModelInterface {
 	public void multiply ();
 	public void divide ();
 	public void opposite();
+	boolean hasValidAccum();
+	double getAccum();
+    int size();
 }
