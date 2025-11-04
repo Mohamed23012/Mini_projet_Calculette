@@ -39,30 +39,29 @@ public class CalculatorControler implements CalculatorControlerInterface {
     }
 
     // actions vue -> contrôleur 
-    public void onPush() {
+    public boolean onPush() {
         try {
             if (view.hasPendingEntry()) {
                 Double v = view.readAndClearEntryOrNull();
-                if (v != null) model.push(v);
+                if (v != null) { model.push(v); return true; }
             }
         } catch (Exception ex) {
             view.showError(ex.getMessage());
         }
+        return false;
     }
+
 
     private void doBinary(Runnable op) {
         try {
-            onPush();
-            
-            if (model.size() == 1 && model.hasValidAccum()) {
+            boolean pushed = onPush();  
+            if (pushed && model.size() == 1 && model.hasValidAccum()) {
                 double last = model.getAccum();
                 model.push(last);
-                model.swap();
+                model.swap(); 
             }
 
-           
             op.run();
-
         } catch (Exception ex) {
             view.showError(ex.getMessage());
         }
