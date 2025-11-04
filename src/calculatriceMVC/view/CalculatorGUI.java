@@ -22,12 +22,12 @@ public class CalculatorGUI extends JFrame {
                     UIManager.setLookAndFeel(info.getClassName());
         } catch (Exception ignored) {}
 
-        Color BG = new Color(30, 33, 43);
-        Color CARD = new Color(45, 49, 60);
-        Color TEXT = Color.WHITE;
-        Color ACCENT = new Color(70, 110, 255);
-        Font F_TITLE = new Font("SansSerif", Font.BOLD, 16);
-        Font F_TEXT = new Font("Monospaced", Font.PLAIN, 14);
+        Color BG = new Color(255, 255, 255);
+        Color ECRAN = new Color(200, 220, 200);
+        Color TEXTE = Color.BLACK;
+        Color OPERATEURS = new Color(70, 110, 255); 
+        Font F_TITRE = new Font("SansSerif", Font.BOLD, 16);
+        Font F_TEXTE = new Font("Monospaced", Font.PLAIN, 14);
         Font F_BTN = new Font("SansSerif", Font.BOLD, 13);
 
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -36,12 +36,12 @@ public class CalculatorGUI extends JFrame {
         ((JComponent) getContentPane()).setBorder(new EmptyBorder(8, 8, 8, 8));
 
         JPanel header = new JPanel(new BorderLayout());
-        header.setBackground(CARD);
+        header.setBackground(ECRAN);
         header.setBorder(new EmptyBorder(6, 8, 6, 8));
         JLabel title = new JLabel("Calculatrice NPI");
-        title.setFont(F_TITLE);
-        title.setForeground(TEXT);
-        accuLabel.setForeground(TEXT);
+        title.setFont(F_TITRE);
+        title.setForeground(TEXTE);
+        accuLabel.setForeground(TEXTE);
         header.add(title, BorderLayout.WEST);
         header.add(accuLabel, BorderLayout.EAST);
         add(header, BorderLayout.NORTH);
@@ -50,12 +50,12 @@ public class CalculatorGUI extends JFrame {
         body.setOpaque(false);
 
         JPanel stackPanel = new JPanel(new GridLayout(5, 1, 2, 2));
-        stackPanel.setBackground(CARD);
+        stackPanel.setBackground(ECRAN);
         stackPanel.setBorder(new EmptyBorder(8, 8, 8, 8));
         for (int i = 0; i < stackLines.length; i++) {
             stackLines[i] = new JLabel("", SwingConstants.RIGHT);
-            stackLines[i].setFont(F_TEXT);
-            stackLines[i].setForeground(TEXT);
+            stackLines[i].setFont(F_TEXTE);
+            stackLines[i].setForeground(TEXTE);
             stackPanel.add(stackLines[i]);
         }
         body.add(stackPanel, BorderLayout.NORTH);
@@ -67,9 +67,8 @@ public class CalculatorGUI extends JFrame {
             for (String txt : row) {
                 JButton b = new JButton(txt);
                 b.setFont(F_BTN);
-                b.setForeground(TEXT);
-                b.setBackground(new Color(60, 65, 80));
-                b.setFocusPainted(false);
+                b.setForeground(TEXTE);
+                b.setBackground(new Color(192, 192, 192));
                 b.setMargin(new Insets(4, 4, 4, 4));
                 b.addActionListener(e -> onNumPad(txt));
                 numPanel.add(b);
@@ -78,13 +77,13 @@ public class CalculatorGUI extends JFrame {
 
         JPanel opsPanel = new JPanel(new GridLayout(10, 1, 4, 4));
         opsPanel.setOpaque(false);
-        String[] ops = { "+", "−", "×", "÷", "±", "PUSH", "DROP", "SWAP", "CLS", "POP" };
-        String[] methods = { "onAdd", "onSub", "onMul", "onDiv", "onOpp", "onPush", "onDrop", "onSwap", "onClear", "onPop" };
+        String[] ops = { "+", "−", "×", "÷", "±", "PUSH", "DROP", "SWAP", "POP", "CLS" };
+        String[] methods = { "onAdd", "onSub", "onMul", "onDiv", "onOpp", "onPush", "onDrop", "onSwap", "onPop", "onClear" };
         for (int i = 0; i < ops.length; i++) {
             JButton b = new JButton(ops[i]);
             b.setFont(F_BTN);
-            b.setForeground(TEXT);
-            b.setBackground((i < 4) ? ACCENT : new Color(80, 85, 100));
+            b.setForeground(TEXTE);
+            b.setBackground((i < 4) ? OPERATEURS : new Color(255, 210, 80));
             b.setFocusPainted(false);
             b.setMargin(new Insets(4, 4, 4, 4));
             String m = methods[i];
